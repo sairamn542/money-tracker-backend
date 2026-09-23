@@ -1,0 +1,34 @@
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors"
+import mongoose from "mongoose";
+import adminRoutes from "./routes/adminRoutes.js"
+import customerRoute from "./routes/customerRoutes.js"
+import loanRoute from "./routes/loanRoutes.js"
+import paymentRoute from "./routes/paymentRoute.js"
+import googleRoute from "./routes/googleRoute.js"
+import cookieParser from "cookie-parser"
+import { errorHandler } from "./middleware/errorHandler.js";
+dotenv.config()
+import "./jobs/reminderJob.js"
+mongoose.connect(process.env.MONGO_URI).then(() => {
+    console.log("Connected To DB")
+}).catch((error) => {
+    console.log(error)
+})
+const app = express()
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true
+}));
+app.use(express.json())
+app.use(cookieParser())
+app.use("/api/admin", adminRoutes)
+app.use("/api/customer/", customerRoute)
+app.use("/api/loan/", loanRoute)
+app.use("/api/payment/", paymentRoute)
+app.use("/api/google/", googleRoute)
+app.use(errorHandler)
+app.listen(3000, () => {
+    console.log('App listening on port 3000!');
+});
