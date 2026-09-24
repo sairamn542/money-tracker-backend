@@ -64,6 +64,7 @@ export const googleCallback = async (req, res, next) => {
 
         res.send("Google account connected successfully!");
     } catch (error) {
+        console.log("GOOGLE CALLBACK ERROR:", error);
         next(error);
     }
 };
