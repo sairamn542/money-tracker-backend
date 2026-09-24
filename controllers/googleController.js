@@ -47,7 +47,7 @@ export const connectGoogle = async (req, res, next) => {
 export const googleCallback = async (req, res, next) => {
     try {
         const { code, state } = req.query;
-
+        console.log("GOOGLE CALLBACK QUERY:", req.query);
         if (!code || !state) {
             return next(errorHandler(400, "Google authorization failed"));
         }
