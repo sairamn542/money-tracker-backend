@@ -24,7 +24,11 @@ export const createPayment = async (req, res, next) => {
         });
         loan.remainingAmount -= amount
         if (loan.remainingAmount === 0) {
-            loan.status = "paid"
+            await Loan.deleteOne({
+                _id: loan._id,
+                adminId: req.user.id
+            });
+            return res.status(200).json("Payment created and loan completed");
         }
         await loan.save()
         res.status(201).json("Payment created successfully")

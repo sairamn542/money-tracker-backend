@@ -21,10 +21,6 @@ const LoanSchema = new mongoose.Schema({
         required: true,
         min: 0
     },
-    dueDate: {
-        type: Date,
-        required: true
-    },
     status: {
         type: String,
         enum: ["active", "paid", "overdue"],

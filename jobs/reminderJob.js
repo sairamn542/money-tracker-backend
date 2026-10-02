@@ -4,8 +4,9 @@ import Customer from "../models/Customer.js";
 import Admin from "../models/Admin.js";
 import { sendGmail } from "../services/googleEmailService.js";
 
-cron.schedule("0 9 * * 1", async () => {
-// cron.schedule("*/5 * * * *", async () => {
+// cron.schedule("0 9 * * 1", async () => {
+cron.schedule("0 10 * * 0", async () => {
+    // cron.schedule("*/5 * * * *", async () => {
     try {
         console.log("Checking loan reminders...");
 
