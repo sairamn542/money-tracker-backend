@@ -24,7 +24,7 @@ export const signinAdmin = async (req, res, next) => {
         if (!validatePassword) return next(errorHandler(401, "invalid credentials"))
         const token = jwt.sign({ id: validAdmin._id }, process.env.JWT_SECRET)
         const { password: pass, ...admin } = validAdmin._doc
-        res.cookie("access_token", token, { httpOnly: true }).status(200).json(admin)
+        res.cookie("access_token", token, { httpOnly: true, secure: true, sameSite: "none" }).status(200).json(admin)
     } catch (error) {
         next(error)
     }
