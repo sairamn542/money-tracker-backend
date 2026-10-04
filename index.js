@@ -6,6 +6,7 @@ import adminRoutes from "./routes/adminRoutes.js"
 import customerRoute from "./routes/customerRoutes.js"
 import loanRoute from "./routes/loanRoutes.js"
 import paymentRoute from "./routes/paymentRoute.js"
+import reminderRoute from "./routes/reminderRoutes.js"
 import googleRoute from "./routes/googleRoute.js"
 import cookieParser from "cookie-parser"
 import { errorHandler } from "./middleware/errorHandler.js";
@@ -27,6 +28,7 @@ app.use("/api/admin", adminRoutes)
 app.use("/api/customer/", customerRoute)
 app.use("/api/loan/", loanRoute)
 app.use("/api/payment/", paymentRoute)
+app.use("/api/reminder", reminderRoute)
 app.use("/api/google/", googleRoute)
 app.use(errorHandler)
 const PORT = process.env.PORT || 3000;
