@@ -20,7 +20,7 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 const app = express()
 app.use(cors({
     // origin: "http://localhost:5173",
-    origin: "https://sairam-money-tracker.netlify.app/",
+    origin: "https://sairam-money-tracker.netlify.app",
     credentials: true
 }));
 app.use(express.json())
