@@ -10,7 +10,7 @@ import googleRoute from "./routes/googleRoute.js"
 import cookieParser from "cookie-parser"
 import { errorHandler } from "./middleware/errorHandler.js";
 dotenv.config()
-import "./jobs/reminderJob.js"
+// import "./jobs/reminderJob.js"
 mongoose.connect(process.env.MONGO_URI).then(() => {
     console.log("Connected To DB")
 }).catch((error) => {
