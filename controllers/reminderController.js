@@ -17,14 +17,10 @@ export const runReminders = async (req, res) => {
     try {
         console.log("Checking loan reminders...");
 
-        const today = new Date();
-
         const loans = await Loan.find({
             status: "active",
-            remainingAmount: { $gt: 0 },
-            dueDate: { $gte: today }
+            remainingAmount: { $gt: 0 }
         });
-
         let sentCount = 0;
 
         for (const loan of loans) {
